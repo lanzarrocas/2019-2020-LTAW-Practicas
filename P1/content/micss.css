@@ -5,3 +5,33 @@ body {
 p {
   color: green;
 }
+
+#logo {
+
+  padding: 5px;
+  width: 500px;
+  height: 500px;
+  display:block;
+  margin:auto;
+}
+
+#r8 {
+  width: 1000px;
+  height: 1000px;
+  display:block;
+  margin:auto;
+}
+
+img {
+  display:block;
+  margin:auto;
+}
+
+#titulo {
+  padding : 5px;
+  width: 1000px;
+  height: 1000px;
+  display:block;
+  margin:auto;
+
+}
