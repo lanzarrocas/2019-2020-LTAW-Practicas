@@ -1,31 +1,49 @@
 const http = require('http');
-const PUERTO = 8080
 const url = require('url');
-// -- API for interacting with the file system
 const fs = require('fs');
+var path = require('path');
+const PUERTO = 8080
 
-console.log("Arrancando servidor...")
+var mimeTypes = {
+  '.js' : 'text/javascript',
+  '.html' : 'text/html',
+  '.css' : 'text/css',
+  '.png' : 'image/png'
+}
+//-- Configurar y lanzar el servidor. Por cada peticion recibida
+//-- se imprime un mensaje en la consola
+http.createServer((req, res) => {
+  console.log("----------> Peticion recibida")
+  var buscar = path.basename(decodeURI(req.url)) || 'index.html' ,
+  filename = 'content/' + buscar;
+  console.log("Se ha solicitado el recurso " + filename );
+  //-- Leer fichero
+  fs.exists(filename, function(exists) {
+    if (exists) {
+      fs.readFile(filename, function(err, data) {
+            //-- Fichero no encontrado. Devolver mensaje de error
+            if (err) {
+              console.log("Se ha producido un error interno");
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("error del servidor");
 
-//-- Configurar el servidor. Cada vez que llegue una peteicion
-//-- se notifica en la consola
-server = http.createServer( (req, res) => {
-  console.log("---> Peticion recibida")
-  console.log("Recurso solicitado (URL): " + req.url)
+            }
+            console.log("Recurso" + filename + "ENVIADO");
+            console.log();
+            var headers = {'Content-Type': mimeTypes[path.extname(buscar)]};
+            //-- Generar el mensaje de respuesta
+            res.writeHead(200, headers);
+            //res.write(data);
+            res.end(data);
+        });
+        return;
+      }
 
-  //-- Analisis de la URL recibida:
-  let q = url.parse(req.url, true);
-
-  console.log("Pathname: " +  q.pathname)
-  console.log("search: " + q.search)
-  console.log("Búsqueda:")
-  let qdata = q.query
-  console.log(qdata)
-
-  //-- Acceso al objeto
-  console.log("Artículo: " + qdata.articulo)
-  console.log("Color: " + qdata.color)
+      res.writeHead(404); // -- Archivo no encontrado
+      res.end("pagina no encontrada");
+    });
 
 }).listen(PUERTO);
 
-
-console.log("Puerto: " + PUERTO)
+console.log("Servidor corriendo...");
+console.log("Puerto: " + PUERTO);
