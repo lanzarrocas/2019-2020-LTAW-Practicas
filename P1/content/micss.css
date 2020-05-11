@@ -1,37 +1,60 @@
 body {
   background-color: lightblue;
+    font-size: 100%;
 }
 
 p {
   color: green;
 }
 
-#logo {
 
-  padding: 5px;
-  width: 500px;
-  height: 500px;
-  display:block;
+#coches {
+  display:inline;
+  margin:auto;
+}
+
+
+#motos {
+  display:inline;
   margin:auto;
 }
 
 #r8 {
   width: 1000px;
-  height: 1000px;
+  height: 450px;
   display:block;
   margin:auto;
 }
 
-img {
-  display:block;
-  margin:auto;
+img.icon {
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  width: 5%;
 }
 
-#titulo {
-  padding : 5px;
-  width: 1000px;
-  height: 1000px;
-  display:block;
-  margin:auto;
+img#icon0 {
+  top : -5%;
+  padding-right: 30%;
+  width: 200px; height: 200px;
+}
 
+
+img#icon1 {
+  padding-right: 20%;
+}
+
+img#icon2 {
+  padding-right: 10%;
+}
+
+
+
+div.iconos {
+ position: -webkit-sticky; /* Safari */
+ position: sticky;
+ top: 0;
+ width: 100%;
+ background-color: white;
+ opacity: 0.9;
 }
