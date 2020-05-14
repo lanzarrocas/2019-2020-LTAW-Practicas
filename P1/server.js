@@ -57,6 +57,66 @@ http.createServer((req, res) => {
       filename = 'content/noregistrado.html';
     }
  }
+ if (buscar == "factura.html") {
+   console.log("guía")
+   if (req.method === 'POST') {
+        // Handle post info...
+
+
+
+        var content = `<!DOCTYPE html>
+        <html lang="es" dir="ltr">
+          <head>
+            <meta charset="utf-8">
+            <title> FACTURA </title>
+            <link  rel="icon"   href="content/carrito.png" type="image/png" >
+            <link rel="stylesheet" href="/css/micss.css">
+          </head>
+          <body>
+
+            <div class="iconos">
+            <h1 id="mainTitle" class="icon" style="font-size:6vw"> FACTURA <h1>
+            <img id ="icon0" class="icon" src="logo.png" alt="logo" >
+            <a href="index.html">
+            <img id ="icon1" class="icon" src="inicio.png" alt="inicio" >
+            </a>
+            <a href="carrito.html">
+            <img id ="icon2" class="icon" src="carrito.png" alt="carrito">
+            </a>
+            <a href="login.html">
+            <img id ="icon3" class="icon" src="registro.png" alt="registro">
+            </a>
+            </div>
+
+          </body>
+        </html> `
+
+        req.on('data', chunk => {
+              //-- Leer los datos (convertir el buffer a cadena)
+              data = chunk.toString();
+
+              //-- Añadir los datos a la respuesta
+              content += data;
+
+              //-- Mostrar los datos en la consola del servidor
+              console.log("Datos recibidos: " + data)
+              res.statusCode = 200;
+           });
+
+        req.on('end', ()=> {
+              //-- Generar el mensaje de respuesta
+              res.setHeader('Content-Type', 'text/html')
+              res.write(content);
+              res.end();
+              })
+              return
+    }
+}
+
+
+
+
+
 
   //-- Leer fichero
   fs.exists(filename, function(exists) {

@@ -48,6 +48,9 @@ img#icon2 {
   padding-right: 10%;
 }
 
+div.coches , div.motos, div.index {
+  text-align:center;
+}
 
 
 div.iconos {
@@ -57,4 +60,16 @@ div.iconos {
  width: 100%;
  background-color: white;
  opacity: 0.9;
+}
+
+#formulario {
+  text-align: center;
+  font-family: fantasy;
+  border: black 1px solid;
+  height: auto;
+  width: auto;
+}
+
+#footer {
+  text-align: center;
 }

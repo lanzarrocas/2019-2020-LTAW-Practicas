@@ -22,5 +22,29 @@
     </a>
     </div>
 
+    <form id="formulario" action="/factura.html" method="post">
+    <br>
+    NOMBRE
+    <input type="text" name="Nombre" > <br>
+    APELLIDO
+    <input type="text" name="Apellido" > <br>
+    <br>
+    Tarjeta bancaria
+    <input type="radio" name = "pago" value="Tarjeta bancaria" checked> <br>
+    Paypal
+    <input type="radio" name = "pago" value="Paypal"> <br>
+    Contrarrembolso
+    <input type="radio" name = "pago" value="Contrarrembolso"> <br>
+    <br>
+    Entrega por la mañana
+    <input type="checkbox" name="Entrega por la mañana" > <br>
+    Entrega por la tarde
+    <input type="checkbox" name="Entrega por la tarde" > <br>
+    <br>
+    <input type="submit" name="Enviar" value="ENVIAR">
+    </form>
+
+    <p id="footer"> © Pablo Esteban Martín </p>
+
   </body>
 </html>
