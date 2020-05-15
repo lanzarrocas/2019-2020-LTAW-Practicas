@@ -48,10 +48,22 @@ http.createServer((req, res) => {
   // -- Si accedemos al login , se creará una cookie de registro
   // que el servidor envia al cliente en el mensaje de respuesta
   // el cliente almacenará esta cookie
-  if (buscar == "login.html") {
-    res.setHeader('Set-Cookie', 'user=pablo')
-    console.log("Cookie creada y enviada al servidor: (" + cookie + ")");
+  if (buscar == "logincheck.html") {
+    if (req.method === 'POST') {
+         req.on('data', chunk => {
+               //-- Leer los datos (convertir el buffer a cadena)
+               data = chunk.toString();
+
+               //-- Mostrar los datos en la consola del servidor
+               console.log("NOMBRE recibidos: " + data)
+               res.statusCode = 200;
+            });
+
+            res.setHeader('Set-Cookie', 'user=registred')
+            console.log("Cookie creada y enviada al cliente: 'user=registred'");
+    }
   }
+
   if (buscar == "carrito.html") {
     if(!cookie) {
       filename = 'content/html/noregistrado.html';
@@ -101,7 +113,7 @@ http.createServer((req, res) => {
 
               var nombre = data.split("&")[0].split("=")[1];
               var apellido = data.split("&")[1].split("&")[0].split("=")[1];
-              
+              var pago = (data.split("pago=")[1].split("&")[0]).replace("+", " ");
               console.log("Nombreee =" + nombre );
               console.log("Apellidooo =" + apellido);
             console.log("Pago =" + pago );
