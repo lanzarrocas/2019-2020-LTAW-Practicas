@@ -52,15 +52,18 @@ http.createServer((req, res) => {
     if (req.method === 'POST') {
          req.on('data', chunk => {
                //-- Leer los datos (convertir el buffer a cadena)
-               data = chunk.toString();
+               // Como estoy enviando en el request los datos
+               // del input type="text" de un formulario con name="Nombre",
+               // en la siguiente variable almacenaremos dicho par que nos
+               // valdrá para generar una cookie de registro.
+               data_cookie = chunk.toString();
 
                //-- Mostrar los datos en la consola del servidor
-               console.log("NOMBRE recibidos: " + data)
+               console.log("NOMBRE recibido: " + data_cookie)
                res.statusCode = 200;
+               res.setHeader('Set-Cookie', data)
+               console.log("Cookie creada y enviada al cliente: " + data_cookie);
             });
-
-            res.setHeader('Set-Cookie', 'user=registred')
-            console.log("Cookie creada y enviada al cliente: 'user=registred'");
     }
   }
 
@@ -69,6 +72,7 @@ http.createServer((req, res) => {
       filename = 'content/html/noregistrado.html';
     }
  }
+
  if (buscar == "factura.html") {
    console.log("guía")
    if (req.method === 'POST') {
@@ -116,7 +120,7 @@ http.createServer((req, res) => {
               var pago = (data.split("pago=")[1].split("&")[0]).replace("+", " ");
               console.log("Nombreee =" + nombre );
               console.log("Apellidooo =" + apellido);
-            console.log("Pago =" + pago );
+              console.log("Pago =" + pago );
 
               res.statusCode = 200;
            });
