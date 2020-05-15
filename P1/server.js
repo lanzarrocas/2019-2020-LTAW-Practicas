@@ -54,15 +54,13 @@ http.createServer((req, res) => {
   }
   if (buscar == "carrito.html") {
     if(!cookie) {
-      filename = 'content/noregistrado.html';
+      filename = 'content/html/noregistrado.html';
     }
  }
  if (buscar == "factura.html") {
    console.log("guía")
    if (req.method === 'POST') {
         // Handle post info...
-
-
 
         var content = `<!DOCTYPE html>
         <html lang="es" dir="ltr">
@@ -100,6 +98,14 @@ http.createServer((req, res) => {
 
               //-- Mostrar los datos en la consola del servidor
               console.log("Datos recibidos: " + data)
+
+              var nombre = data.split("&")[0].split("=")[1];
+              var apellido = data.split("&")[1].split("&")[0].split("=")[1];
+              
+              console.log("Nombreee =" + nombre );
+              console.log("Apellidooo =" + apellido);
+            console.log("Pago =" + pago );
+
               res.statusCode = 200;
            });
 
