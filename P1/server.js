@@ -12,6 +12,13 @@ var mimeTypes = {
   '.png' : 'image/png'
 }
 
+//-- Array con los productos disponibles en la tienda
+//-- Usamos un array, pero podría ser un objeto genérico
+//-- Por simplicidad lo inicializamos con valores constantes, pero
+//-- en una aplicación real este array se obtendría de la base
+//-- de datos
+let productos = ["MOTOS: KTM - HUQSVARNA - KAWASAKI - GASGAS , COCHES: VERYON - CHIRON - PORSCHE - LAMBO"];
+
 //-- Configurar y lanzar el servidor. Por cada peticion recibida
 //-- se imprime un mensaje en la consola
 http.createServer((req, res) => {
@@ -61,10 +68,25 @@ http.createServer((req, res) => {
                //-- Mostrar los datos en la consola del servidor
                console.log("NOMBRE recibido: " + data_cookie)
                res.statusCode = 200;
-               res.setHeader('Set-Cookie', data)
+               res.setHeader('Set-Cookie', data_cookie)
                console.log("Cookie creada y enviada al cliente: " + data_cookie);
             });
     }
+  }
+
+  if (buscar == "myquery") {
+        //-- El array de productos lo pasamos a una cadena de texto,
+        //-- en formato JSON:
+        content = JSON.stringify(productos) + '\n';
+
+        //-- Generar el mensaje de respuesta
+        //-- IMPORTANTE! Hay que indicar que se trata de un objeto JSON
+        //-- en la cabecera Content-Type
+        res.setHeader('Content-Type', 'application/json')
+        res.write(content);
+        res.end();
+        return
+
   }
 
   if (buscar == "carrito.html") {
