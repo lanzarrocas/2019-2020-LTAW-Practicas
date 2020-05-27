@@ -13,9 +13,18 @@ const http = require('http').Server(app);
 const PORT = 8080
 
 //-- Punto de entrada pricipal de mi aplicación WEB
+//-- Página principal
 app.get('/', (req, res) => {
-  res.send('Bienvenido a mi aplicación WEB!')
-})
+  let fich = __dirname + '/index.html';
+  res.sendFile(fich);
+  console.log("Acceso a " + fich);
+});
+
+//-- Otra vista
+app.get('/woala', (req, res) => {
+  res.send('WOALA! Chuck Norris approved!! :-)');
+  console.log("Acceso a /woala");
+});
 
 //-- Lanzar servidor
 http.listen(PORT, function(){
