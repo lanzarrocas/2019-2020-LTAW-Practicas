@@ -15,6 +15,9 @@ const io = require('socket.io')(http);
 //-- Puerto donde lanzar el servidor
 const PORT = 8080
 
+//-- Variable contadora
+var count = 0;
+
 //-- Lanzar servidor
 http.listen(PORT, function(){
   console.log('Servidor lanzado en puerto ' + PORT);
@@ -23,7 +26,7 @@ http.listen(PORT, function(){
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Página principal
 app.get('/', (req, res) => {
-  let path = __dirname + '/chat-6.html';
+  let path = __dirname + '/chat.html';
   res.sendFile(path);
   console.log("Acceso a " + path);
 });
@@ -45,10 +48,11 @@ io.on('connection', function(socket){
 
   //-- Usuario conectado. Imprimir el identificador de su socket
   console.log('--> Usuario conectado!. Socket id: ' + socket.id);
+  count += 1;
 
   //-- Le damos la bienvenida a través del evento 'hello'
   //-- ESte evento lo hemos creado nosotros para nuestro chat
-  socket.emit('hello', "Bienvenido al Chat");
+  socket.emit('hello', "Bienvenido al Chat, eres el usuario nº" + count);
 
   //-- Función de retrollamada de mensaje recibido del cliente
   socket.on('msg', (msg) => {
@@ -58,8 +62,14 @@ io.on('connection', function(socket){
     io.emit('msg', msg);
   })
 
+  //-- Función de retrollamada de comando recibido del cliente
+  socket.on('cmd', (msg) => {
+    console.log("Comando recibido: " + msg);
+  })
+
   //-- Usuario desconectado. Imprimir el identificador de su socket
   socket.on('disconnect', function(){
+    count+= -1;
     console.log('--> Usuario Desconectado. Socket id: ' + socket.id);
   });
 });
