@@ -20,6 +20,11 @@ socket.on('hello', (msg) => {
   display.innerHTML = msg;
 });
 
+socket.on('cmd', (msg) => {
+  console.log("Mensaje del servidor: " + msg);
+  display.innerHTML += "<br> <cmd> " + msg;
+});
+
 //-- Se ha recibido un mensaje
 socket.on('msg', (msg) => {
   //-- Añadirlo al párrafo display
@@ -39,7 +44,7 @@ send.onclick = () => {
     socket.emit('msg', msg.value)
     }
   }
-    
+
   //-- Borramos el mensaje escrito
   msg.value="";
 }

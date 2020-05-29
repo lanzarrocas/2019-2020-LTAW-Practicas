@@ -18,6 +18,11 @@ const PORT = 8080
 //-- Variable contadora
 var count = 0;
 
+//-- Variable fecha
+var fecha = new Date();
+//-- Variable lista de users conected
+var list = "";
+
 //-- Lanzar servidor
 http.listen(PORT, function(){
   console.log('Servidor lanzado en puerto ' + PORT);
@@ -49,10 +54,11 @@ io.on('connection', function(socket){
   //-- Usuario conectado. Imprimir el identificador de su socket
   console.log('--> Usuario conectado!. Socket id: ' + socket.id);
   count += 1;
+  list += socket.id;
 
   //-- Le damos la bienvenida a través del evento 'hello'
   //-- ESte evento lo hemos creado nosotros para nuestro chat
-  socket.emit('hello', "Bienvenido al Chat, eres el usuario nº" + count);
+  // socket.emit('hello', "Bienvenido al Chat, eres el usuario nº" + count);
 
   //-- Función de retrollamada de mensaje recibido del cliente
   socket.on('msg', (msg) => {
@@ -65,6 +71,22 @@ io.on('connection', function(socket){
   //-- Función de retrollamada de comando recibido del cliente
   socket.on('cmd', (msg) => {
     console.log("Comando recibido: " + msg);
+    switch (msg) {
+      case "/hello":
+        socket.emit('hello', "Bienvenido al Chat, eres el usuario nº" + count);
+        break;
+      case "/help":
+        socket.emit('cmd', "Comandos: /hello => Saludo /help => lista de comandos /date  => fecha actual /list => Usuarios conectados ")
+        break;
+      case "/date":
+        socket.emit('cmd', "Fecha: " + fecha);
+        break;
+      case "/list":
+        socket.emit('cmd', "Users conected: " + list);
+        break;
+      default:
+        socket.emit('cmd', "Comando desconocido");
+    }
   })
 
   //-- Usuario desconectado. Imprimir el identificador de su socket
