@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>CHAT 6</title>
+    <link rel="stylesheet" href="chat-css.css">
     <script src="/socket.io/socket.io.js"></script>
     <script src="chat-client.js" defer></script>
   </head>
-  <body>
-    <h1>URJC CHAT</h1>
-    <input id="msg" autocomplete="off" />
-    <button type="button" id="send">SEND</button>
-    <h3>Mensajes recibidos:</h3>
-    <p id="display"></p>
+  <body background="background.jpg">
+    <div class="chat">
+    <h1 id="title">URJC CHAT</h1>
+    <input id="msg" class="css-input" autocomplete="off" />
+    <button type="button" id="send" >SEND</button>
+    <h3 >Mensajes recibidos:</h3>
+    <p id="display" style="color:#FFFFFF"></p>
+  </div>
   </body>
 </html>
