@@ -9,4 +9,7 @@ from . import views
 urlpatterns = [
     # -- Vista pricipal (índice)
     path('', views.index, name='index'),
+    path('list', views.list, name='list'),
+
+
 ]
