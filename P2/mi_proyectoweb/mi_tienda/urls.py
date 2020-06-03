@@ -1,5 +1,5 @@
 from django.urls import path
-
+from django.contrib import admin
 # -- Importar todas las vistas de mi_tienda
 from . import views
 
@@ -8,8 +8,9 @@ from . import views
 
 urlpatterns = [
     # -- Vista pricipal (índice)
+    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('list', views.list, name='list'),
-
-
+    path('formu/', views.formu, name='formu'),
+    path('recepcion/', views.recepcion, name='recepcion'),
 ]

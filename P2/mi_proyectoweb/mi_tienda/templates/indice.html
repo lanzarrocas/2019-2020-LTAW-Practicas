@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
+    {% load static %}
     <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/master.css' %}">
     <title> ÍNDICE TIENDA PABLO</title>
-  </head>
-  <body background="/static/background.jpg" style="background-size: cover">
-    BIENVENIDO A MI TIENDA
-    <a href="/static/banana.html">   <img src="/static/banana.png"> </a>
-    <a href="/static/kiwi.html">     <img src="/static/kiwi.png"> </a>
-    <a href="/static/orange.html">   <img src="/static/orange.png"> </a>
-
+    </head>
+    <body background="/static/background.jpg" style="background-size: cover">
+    <div id="navegador">
+    <ul>
+    <li><a href="/mi_tienda/list"> PRECIOS Y STOCK</a></li>
+    <li><a href="/mi_tienda/formu"> COMPRAR </a></li>
+    <li><a href="#">Elemento 3</a></li>
+    <li><a href="#">Elemento 4</a></li>
+    </ul>
+    </div>
+    {% block content %}
+    {% endblock %}
   </body>
 </html>

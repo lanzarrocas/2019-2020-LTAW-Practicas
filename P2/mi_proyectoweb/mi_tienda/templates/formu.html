@@ -1,0 +1,20 @@
+{% extends "indice.html"%}
+{% block content %}
+    <h1>Formulario de Pedido</h1>
+    <form  action="/mi_tienda/recepcion/" method="post">
+      {% csrf_token %}
+      <div id="formulario">
+      <p class="label">Nombre:<p>
+      <input type="text" name="nombre" value="" />
+      <br>
+      <p class="label">Cantidad: <p>
+      <input type="text" name="cantidad" value="">
+      <br>
+      <p class="label">Producto: <p>
+      <input type="text" name="producto" value="">
+      <br>
+      <input type="submit" value="OK"/>
+      <br>
+      </div>
+    </form>
+{% endblock %}

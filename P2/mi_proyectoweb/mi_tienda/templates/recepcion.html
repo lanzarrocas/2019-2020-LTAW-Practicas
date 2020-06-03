@@ -1,0 +1,15 @@
+{% extends "indice.html"%}
+{% block content %}
+{% load static %}
+{% if stock %}
+<p> STOCK DISPONIBLE PARA USTED DON {{persona}}</p>
+<img src="{% static productos.img %}" style="width: 100px; height: 100px;">
+
+{% else  %}
+<p> NO STOCK de {{productos.nombre}} </p>
+<img src="{% static productos.img %}" style="width: 100px; height: 100px;">
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+    {% extends "indice.html"%}
+    {% block content %}
+    {% load static %}
+      <ul>
+      {% for prod in productos %}
+          <div style="color: #000000;">
+          <li style=" background-color: lightblue; width: 160px">{{ prod.nombre }}: --> Precio: {{prod.precio}}
+          </li>
+          <img src="{% static prod.img %}" style="width: 100px; height: 100px;">
+          <p style="background-color: lightgreen; width: 160px">  --> Stock: {{prod.stock }} </p>
+          <br>
+          <br>
+          </div>
+      {% endfor %}
+      </ul>
+      {% endblock %}

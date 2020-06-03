@@ -7,7 +7,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50)
     stock = models.IntegerField(default=0)
     precio = models.FloatField()
-
+    img = models.CharField(max_length=100)
     # -- Usamos el nombre para identificar
     # -- el producto
     def __str__(self):

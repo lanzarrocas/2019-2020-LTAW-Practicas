@@ -13,9 +13,22 @@ def index(request):
     return render(request, 'indice.html', {})
 
 def list(request):
-    productos = Producto.objects.all()
-    html = "<h2>Listado de articulos</h2>"
-    for prod in productos:
-        print(prod.nombre)
-        html += '<p>'+ prod.nombre + ' ' + str(prod.precio) + str(prod.stock) + ' ' + '<p>'
-    return HttpResponse(html)
+    prod = Producto.objects.all()
+    return render(request, 'listado.html', {'productos':prod})
+
+def formu(request):
+    return render(request, 'formu.html', {})
+
+def recepcion(request):
+    # -- Obtener el nombre de la persona
+    persona = request.POST['nombre']
+    cantidad = request.POST['cantidad']
+    prod = Producto.objects.get(nombre=request.POST['producto'])
+    print(f" PEDIDO RECIBIDO!!! ----> {persona}")
+    if (prod.stock - int(cantidad)) < 0:
+        return render(request, 'recepcion.html', {'productos':prod, 'stock':False, 'persona':persona})
+    else:
+        prod.stock -= int(cantidad)
+        prod.save()
+        return render(request, 'recepcion.html', {'productos':prod, 'stock':True})
+        # return HttpResponse("Datos recibidos!!. Comprador: " + request.POST['nombre'])
