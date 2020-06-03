@@ -1,0 +1,15 @@
+{% extends "indice.html"%}
+{% block content %}
+    <p> CARRITO </p>
+    <form class="" action="/mi_tienda/vercarrito/" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Nombre de usuario" name="user" value=""/>
+    <input type="submit" value="OK"/>
+    </form>
+
+    {% if ok %}
+    <p> {{pedido}}</p>
+    <br>
+    <p>PRECIO: {{precio}} € </p>
+    {% endif %}
+{% endblock %}

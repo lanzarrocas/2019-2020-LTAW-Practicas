@@ -8,9 +8,12 @@ from . import views
 
 urlpatterns = [
     # -- Vista pricipal (índice)
-    path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('list', views.list, name='list'),
     path('formu/', views.formu, name='formu'),
     path('recepcion/', views.recepcion, name='recepcion'),
+    path('register/', views.register, name='register'),
+    path('carrito/', views.carrito, name='carrito'),
+    path('vercarrito/', views.vercarrito, name='vercarrito'),
+    path('registerok/', views.registerok, name='registerok'),
 ]

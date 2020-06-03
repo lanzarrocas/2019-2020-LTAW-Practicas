@@ -1,0 +1,9 @@
+{% extends "indice.html"%}
+{% block content %}
+<p> REGISTRO </p>
+    <form class="" action="/mi_tienda/registerok/" method="post">
+    {% csrf_token %} 
+    <input type="text" placeholder="Nombre de usuario" name="user" value=""/>
+    <input type="submit" value="OK"/>
+    </form>
+{% endblock %}

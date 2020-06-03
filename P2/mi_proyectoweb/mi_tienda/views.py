@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from mi_tienda.models import Producto
+from mi_tienda.models import Producto, Pedido
 
 # Create your views here.
 # -- Fichero mi_tienda/views.py
@@ -28,7 +28,33 @@ def recepcion(request):
     if (prod.stock - int(cantidad)) < 0:
         return render(request, 'recepcion.html', {'productos':prod, 'stock':False, 'persona':persona})
     else:
-        prod.stock -= int(cantidad)
-        prod.save()
-        return render(request, 'recepcion.html', {'productos':prod, 'stock':True})
+        try:
+            pedido = Pedido.objects.get(user=persona)
+            prod.stock -= int(cantidad)
+            prod.save()
+            pedido.addproduct(prod)
+            pedido.save()
+            return render(request, 'recepcion.html', {'productos':prod, 'stock':True, 'persona':persona})
+        except:
+            return render(request, 'register.html', {})
+
         # return HttpResponse("Datos recibidos!!. Comprador: " + request.POST['nombre'])
+def register(request):
+
+    return render(request, 'register.html', {})
+
+def carrito(request):
+    return render(request, 'carrito.html', {'pedido':"" , 'ok':False, 'precio':""})
+
+def vercarrito(request):
+    try:
+        pedido = Pedido.objects.get(user=request.POST['user'])
+        context = {'pedido': pedido.producto , 'ok':True, 'precio': pedido.precio}
+        return render(request, 'carrito.html', context)
+    except :
+        return render(request, 'register.html', {})
+
+def registerok(request):
+    pedido = Pedido(user=request.POST['user'])
+    pedido.save()
+    return render(request, 'indice.html', {})
