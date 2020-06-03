@@ -8,23 +8,6 @@ const send = document.getElementById("send");
 //-- Crear un websocket. Se establece la conexión con el servidor
 const socket = io();
 
-//-- Se ha recibido el evento 'hello':
-//-- Es el mensaje de bienvenida del servidor
-socket.on('hello', (msg) => {
-
-  //-- Mostrarlo en la consola del navegador, para
-  //-- depurar
-  console.log("Mensaje del servidor: " + msg);
-
-  //-- Ponerlo en el párrafo display
-  display.innerHTML = msg;
-});
-
-socket.on('cmd', (msg) => {
-  console.log("Mensaje del servidor: " + msg);
-  display.innerHTML += "<br> <cmd> " + msg;
-});
-
 //-- Se ha recibido un mensaje
 socket.on('msg', (msg) => {
   //-- Añadirlo al párrafo display
