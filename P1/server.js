@@ -51,10 +51,21 @@ http.createServer((req, res) => {
   // -- Almaceno en una variable las cookies enviadas en
   // la solicitud http del cliente
   var cookie = req.headers.cookie;
-
   // -- Si accedemos al login , se creará una cookie de registro
   // que el servidor envia al cliente en el mensaje de respuesta
   // el cliente almacenará esta cookie
+if (buscar == "index.html") {
+  console.log("TRAZA")
+  if (req.method === 'POST') {
+    req.on('data', chunk => {
+      data_cookie = chunk.toString();
+      res.statusCode = 200;
+      res.setHeader('Set-Cookie', data_cookie)
+      console.log("Cookie creada y enviada al cliente: " + data_cookie);
+     });
+  }
+}
+
   if (buscar == "logincheck.html") {
     if (req.method === 'POST') {
          req.on('data', chunk => {
@@ -90,10 +101,11 @@ http.createServer((req, res) => {
   }
 
   if (buscar == "carrito.html") {
-    if(!cookie) {
-      filename = 'content/html/noregistrado.html';
+    if(!cookie||cookie.toString().includes('Nombre') ==false) {
+        filename = 'content/html/noregistrado.html';
     }
  }
+
 
  if (buscar == "factura.html") {
    console.log("guía")
@@ -135,15 +147,18 @@ http.createServer((req, res) => {
               content += data;
 
               //-- Mostrar los datos en la consola del servidor
+
               console.log("Datos recibidos: " + data)
 
               var nombre = data.split("&")[0].split("=")[1];
               var apellido = data.split("&")[1].split("&")[0].split("=")[1];
               var pago = (data.split("pago=")[1].split("&")[0]).replace("+", " ");
+              var entrega = (data.split("hora=")[1].split("&")[0]).replace("%C3%B1","ñ");
               console.log("Nombreee =" + nombre );
               console.log("Apellidooo =" + apellido);
               console.log("Pago =" + pago );
-
+              console.log("Entrega =" + entrega );
+              string = "NOMBRE: " + nombre + "  APELLIDO: " + apellido + "  PAGO: " + pago + "  ENTREGA: " + entrega;
               res.statusCode = 200;
            });
 
@@ -156,10 +171,6 @@ http.createServer((req, res) => {
               return
     }
 }
-
-
-
-
 
 
   //-- Leer fichero

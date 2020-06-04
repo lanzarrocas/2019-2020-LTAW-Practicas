@@ -7,9 +7,8 @@ p {
   color: green;
 }
 
-
 #coches {
-  display:inline;
+  display:flex;
   margin:auto;
 }
 
@@ -71,4 +70,8 @@ div.iconos {
 
 #footer {
   text-align: center;
+}
+
+.formu {
+    text-align: center;
 }
