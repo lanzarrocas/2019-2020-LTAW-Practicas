@@ -15,6 +15,9 @@ const io = require('socket.io')(http);
 //-- Puerto donde lanzar el servidor
 const PORT = 8080
 
+//-- Mensaje msg_comandos
+msg_comandos = "COMANDOS: /hello => Saludo  /help => lista de comandos /date => fecha actual  /list => Usuarios conectados  /cls => borrar display";
+
 //-- Variable contadora
 var count = 0;
 
@@ -29,12 +32,6 @@ app.get('/', (req, res) => {
   let path = __dirname + '/chat.html';
   res.sendFile(path);
   console.log("Acceso a " + path);
-});
-
-//-- Otra vista de prueba
-app.get('/woala', (req, res) => {
-  res.send('WOALA! Chuck Norris approved!! :-)');
-  console.log("Acceso a /woala");
 });
 
 //-- El resto de peticiones se interpretan como
@@ -71,10 +68,10 @@ io.on('connection', function(socket){
     console.log("Comando recibido: " + msg);
     switch (msg) {
       case "/hello":
-        socket.emit('msg', "HOLA AMIGO SOY SERVER");
+        socket.emit('msg', "HI, I'M YOUR SERVER");
         break;
       case "/help":
-        socket.emit('msg', "Comandos: /hello => Saludo /help => lista de comandos /date  => fecha actual /list => Usuarios conectados ")
+        socket.emit('msg', msg_comandos)
         break;
       case "/date":
         socket.emit('msg', "Fecha: " + new Date());

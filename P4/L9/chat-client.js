@@ -18,13 +18,19 @@ socket.on('msg', (msg) => {
 send.onclick = () => {
 
   //-- Se envía el mensaje escrito
-  //-- Usamos el nombre 'msg' para los mensajes de usuario
   //-- Si no se ha introducido ningún mensaje, no se envía
   if (msg.value) {
-    if (msg.value[0] == "/") {
-    socket.emit('cmd', msg.value)
+    //-- Se borra el display
+    if (msg.value == "/cls") {
+      display.innerHTML ="";
     } else {
-    socket.emit('msg', msg.value)
+      //-- Usamos el nombre 'cmd' para los comandos
+      if (msg.value[0] == "/" && msg.value != "/cls") {
+      socket.emit('cmd', msg.value)
+      } else {
+      //-- Usamos el nombre 'msg' para los mensajes de usuario
+      socket.emit('msg', msg.value)
+      }
     }
   }
 
