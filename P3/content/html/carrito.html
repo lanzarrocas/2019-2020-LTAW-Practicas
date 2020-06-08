@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> CARRITO</title>
+    <link  rel="icon"   href="content/carrito.png" type="image/png" >
+    <link rel="stylesheet" href="/css/micss.css">
+  </head>
+  <body>
+
+    <div class="iconos">
+    <h1 id="mainTitle" class="icon" style="font-size:6vw"> CARRITO <h1>
+    <img id ="icon0" class="icon" src="logo.png" alt="logo" >
+    <a href="index.html">
+    <img id ="icon1" class="icon" src="inicio.png" alt="inicio" >
+    </a>
+    <a href="carrito.html">
+    <img id ="icon2" class="icon" src="carrito.png" alt="carrito">
+    </a>
+    <a href="login.html">
+    <img id ="icon3" class="icon" src="registro.png" alt="registro">
+    </a>
+    </div>
+
+    <form style="color: blue;" id="formulario" action="/factura.html" method="post">
+    <br>
+    NOMBRE
+    <input type="text" name="Nombre" > <br>
+    APELLIDO
+    <input type="text" name="Apellido" > <br>
+    <br>
+    Tarjeta bancaria
+    <input type="radio" name = "pago" value="Tarjeta bancaria" checked> <br>
+    Paypal
+    <input type="radio" name = "pago" value="Paypal"> <br>
+    Contrarrembolso
+    <input type="radio" name = "pago" value="Contrarrembolso"> <br>
+    <br>
+    Entrega por la mañana
+    <input type="radio" name="hora" value="Mañana" checked> <br>
+    Entrega por la tarde
+    <input type="radio" name="hora" value="Tarde"> <br>
+    <br>
+    <input type="submit" name="Enviar" value="ENVIAR">
+    </form>
+
+    <p id="footer"> © Pablo Esteban Martín </p>
+
+  </body>
+</html>

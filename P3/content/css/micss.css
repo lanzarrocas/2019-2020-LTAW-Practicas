@@ -1,0 +1,77 @@
+body {
+  background-color: lightblue;
+    font-size: 100%;
+}
+
+p {
+  color: green;
+}
+
+#coches {
+  display:flex;
+  margin:auto;
+}
+
+
+#motos {
+  display:inline;
+  margin:auto;
+}
+
+#r8 {
+  width: 1000px;
+  height: 450px;
+  display:block;
+  margin:auto;
+}
+
+img.icon {
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  width: 5%;
+}
+
+img#icon0 {
+  top : -5%;
+  padding-right: 30%;
+  width: 200px; height: 200px;
+}
+
+
+img#icon1 {
+  padding-right: 20%;
+}
+
+img#icon2 {
+  padding-right: 10%;
+}
+
+div.coches , div.motos, div.index {
+  text-align:center;
+}
+
+div.iconos {
+ position: -webkit-sticky; /* Safari */
+ position: sticky;
+ top: 0;
+ width: 100%;
+ background-color: white;
+ opacity: 0.9;
+}
+
+#formulario {
+  text-align: center;
+  font-family: fantasy;
+  border: black 1px solid;
+  height: auto;
+  width: auto;
+}
+
+#footer {
+  text-align: center;
+}
+
+.formu {
+    text-align: center;
+}

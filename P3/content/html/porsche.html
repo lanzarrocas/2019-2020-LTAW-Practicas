@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title> TIENDA MOTOR </title>
-    <link  rel="icon"   href="content/logo.png" type="image/png" >
+    <title> COCHES </title>
     <link rel="stylesheet" href="/css/micss.css">
+    <link  rel="icon"   href="content/evo.png" type="image/png" >
+
   </head>
   <body>
-
-
         <div class="iconos">
-        <h1 id="mainTitle" class="icon" style="font-size:6vw"> TIENDA MOTOR <h1>
+        <h1 id="mainTitle" class="icon" style="font-size:6vw"> COCHES <h1>
         <img id ="icon0" class="icon" src="logo.png" alt="logo" >
         <a href="index.html">
         <img id ="icon1" class="icon" src="inicio.png" alt="inicio" >
@@ -19,24 +17,23 @@
         <a href="carrito.html">
         <img id ="icon2" class="icon" src="carrito.png" alt="carrito">
         </a>
-        <a href="/login.html">
+        <a href="registro.html">
         <img id ="icon3" class="icon" src="registro.png" alt="registro">
         </a>
         </div>
 
-        <h1> HAZ REGISTRO PREVIAMENTE </h1>
+        <div class="coches">
+        <img src="porschepana.png" alt="porschepana">
+        </div>
 
+        <form class="formu" action="/index.html" method="post">
+        Nombre:
+        <input type="text" name="prod" value="porsche" readonly="readonly"/> <br />
+        <br>
+        <input type="submit" value="COMPRAR"/>
+        </form>
 
+      <p id="footer"> © Pablo Esteban Martín </p>
 
-    <a href="coches.html">
-    <img src="veryon.png" alt="buggativeyron" id ="coches">
-    </a>
-    <a href="motos.html">
-    <img src="mh.png" alt="mh" id="motos">
-    </a>
-    <a href="coches.html"> COCHES </a>
-    <a href="motos.html"> MOTOS </a>
-
-    <p id="footer"> © Pablo Esteban Martín </p>
   </body>
 </html>

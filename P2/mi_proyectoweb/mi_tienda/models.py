@@ -22,6 +22,6 @@ class Pedido(models.Model):
     def __str__(self):
         return self.user
 
-    def addproduct (self, producto):
-        self.producto=self.producto + "," + producto.nombre
-        self.precio = self.precio + producto.precio
+def addproduct (self, producto):
+    self.producto = self.producto + "," + producto.nombre
+    self.precio = self.precio + producto.precio

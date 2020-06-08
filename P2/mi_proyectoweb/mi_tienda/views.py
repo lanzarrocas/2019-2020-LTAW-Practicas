@@ -31,8 +31,9 @@ def recepcion(request):
         try:
             pedido = Pedido.objects.get(user=persona)
             prod.stock -= int(cantidad)
+            pedido.producto += cantidad + prod.nombre + ","
+            pedido.precio +=prod.precio*int(cantidad)
             prod.save()
-            pedido.addproduct(prod)
             pedido.save()
             return render(request, 'recepcion.html', {'productos':prod, 'stock':True, 'persona':persona})
         except:

@@ -1,5 +1,10 @@
 # Práctica 4 - CHAT
 
+    Autor: Pablo Esteban Martín
+    ASIGNATURA "LTAW"
+    Ingeniería de Sistemas Audiovisuales y multimedia URJC
+    CURSO 2019/2020
+
     Bienvenido a mi chat creado con WebSocket + Node.js + Express.
   Para ejecutar la aplicación acceda al directorio donde se encuentra este documento
   e introduzca:

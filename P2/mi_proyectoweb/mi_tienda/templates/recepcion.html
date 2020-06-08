@@ -2,14 +2,14 @@
 {% block content %}
 {% load static %}
 {% if stock %}
-<p> STOCK DISPONIBLE PARA USTED DON {{persona}}</p>
-<img src="{% static productos.img %}" style="width: 100px; height: 100px;">
+<p> STOCK DISPONIBLE DE {{productos.nombre}} para usted don {{persona}} </p>
+
 
 {% else  %}
-<p> NO STOCK de {{productos.nombre}} </p>
-<img src="{% static productos.img %}" style="width: 100px; height: 100px;">
+<p> NO STOCK de {{productos.nombre}}, el STOCK DISPONIBLE es de {{productos.stock}} </p>
 
 {% endif %}
+<img src="{% static productos.img %}" style="width: 100px; height: 100px;">
 
 
 {% endblock %}
