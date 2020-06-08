@@ -1,8 +1,8 @@
 {% extends "indice.html"%}
 {% block content %}
-<p> REGISTRO </p>
+<h1 style="font-family: Georgia, serif; color: lightgreen;"> REGISTRO </h1>
     <form class="" action="/mi_tienda/registerok/" method="post">
-    {% csrf_token %} 
+    {% csrf_token %}
     <input type="text" placeholder="Nombre de usuario" name="user" value=""/>
     <input type="submit" value="OK"/>
     </form>

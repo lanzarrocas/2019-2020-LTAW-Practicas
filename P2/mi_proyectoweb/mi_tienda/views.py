@@ -31,8 +31,8 @@ def recepcion(request):
         try:
             pedido = Pedido.objects.get(user=persona)
             prod.stock -= int(cantidad)
-            pedido.producto += cantidad + prod.nombre + ","
-            pedido.precio +=prod.precio*int(cantidad)
+            pedido.producto = pedido.producto + cantidad + prod.nombre + ","
+            pedido.precio = pedido.precio + prod.precio*float(cantidad)
             prod.save()
             pedido.save()
             return render(request, 'recepcion.html', {'productos':prod, 'stock':True, 'persona':persona})
@@ -59,3 +59,6 @@ def registerok(request):
     pedido = Pedido(user=request.POST['user'])
     pedido.save()
     return render(request, 'indice.html', {})
+
+def about(request):
+    return render(request, 'about.html', {})

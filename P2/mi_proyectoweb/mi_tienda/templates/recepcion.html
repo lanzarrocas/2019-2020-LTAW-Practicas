@@ -1,12 +1,12 @@
 {% extends "indice.html"%}
 {% block content %}
-{% load static %}
+{% load staticfiles %}
 {% if stock %}
-<p> STOCK DISPONIBLE DE {{productos.nombre}} para usted don {{persona}} </p>
+<h1 style="font-family: Georgia, serif; color: #4FFF0B;"> STOCK disponible de {{productos.nombre}} para usted don {{persona}} </h1>
 
 
 {% else  %}
-<p> NO STOCK de {{productos.nombre}}, el STOCK DISPONIBLE es de {{productos.stock}} </p>
+<h1 style="font-family: Georgia, serif; color: #4FFF0B;"> NO STOCK de {{productos.nombre}}, el STOCK DISPONIBLE es de {{productos.stock}} </h1>
 
 {% endif %}
 <img src="{% static productos.img %}" style="width: 100px; height: 100px;">

@@ -1,6 +1,6 @@
 {% extends "indice.html"%}
 {% block content %}
-    <p> CARRITO </p>
+    <h1 style="font-family: Georgia, serif; color: lightgreen;"> CARRITO </h1>
     <form class="" action="/mi_tienda/vercarrito/" method="post">
     {% csrf_token %}
     <input type="text" placeholder="Nombre de usuario" name="user" value=""/>
@@ -8,8 +8,8 @@
     </form>
 
     {% if ok %}
-    <p> {{pedido}}</p>
+    <h1 style="font-family: Georgia, serif; color: lightgreen;"> SU PEDIDO: {{pedido}}</h1>
     <br>
-    <p>PRECIO: {{precio}} € </p>
+    <h2  style="font-family: Georgia, serif; color: lightgreen;" > PRECIO: {{precio}} € </h2>
     {% endif %}
 {% endblock %}
