@@ -6,7 +6,7 @@
     CURSO 2019/2020
 
     Bienvenido a mi chat creado con WebSocket + Node.js + Express.
-  Para ejecutar la aplicación acceda al directorio donde se encuentra este documento
+  Para ejecutar la aplicación acceda al directorio L9 donde se encuentra este documento
   e introduzca:
   ---> node .\chat-server.js
 
